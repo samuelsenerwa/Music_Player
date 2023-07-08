@@ -16,9 +16,32 @@ class HomeScreen extends StatelessWidget {
           ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+        appBar: const _CustomAppBar(),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.deepPurple.shade800,
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.white,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_outline),
+              label: 'Favourites',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.play_circle_outline),
+              label: 'Play',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              label: 'Profile',
+          ),
+          ],
         ),
         body: Container(),
       ),
@@ -26,11 +49,9 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _CustomAppbar extends StatelessWidget {
-  //add this line next statelesswidget
-  // with PreferredSizeWidget
-  const _CustomAppbar({
-    Key? key,
+class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
+  const _CustomAppBar({
+    Key ? key,
   }) : super(key: key);
 
   @override
@@ -38,18 +59,20 @@ class _CustomAppbar extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: const Icon(Icons.grid_view_rounded),
+      leading: const Icon(Icons.grid_view_rounded), 
       actions: [
         Container(
           margin: const EdgeInsets.only(right: 20),
-          child: CircleAvatar(
-            backgroundImage: AssetImage("assets/images/music1.jpg"),
+          child: const CircleAvatar(
+            backgroundImage: NetworkImage("https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"),
           ),
         )
       ],
     );
   }
-
+  
   @override
+  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(56.0);
 }
+

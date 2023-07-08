@@ -1,3 +1,4 @@
+import 'package:dynamic_music_player/models/song_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,6 +6,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Song> songs = Song.songs;
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -22,6 +24,9 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               _DiscoverMusic(),
+              Column(
+                children: [],
+              )
             ],
           ),
         ),

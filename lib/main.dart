@@ -2,6 +2,7 @@ import 'package:dynamic_music_player/screens/home_screen.dart';
 import 'package:dynamic_music_player/screens/playlist_screen.dart';
 import 'package:dynamic_music_player/screens/song_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());

@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Music player',
       theme: ThemeData(
@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
             .apply(bodyColor: Colors.white, displayColor: Colors.white),
       ),
       home: HomeScreen(),
-      // getPages: [
-      //   GetPage(name: '/', page: () => HomeScreen()),
-      //   GetPage(name: '/song', page: () => SongScreen()),
-      //   GetPage(name: '/playlist', page: () => PlaylistScreen()),
-      // ],
+      getPages: [
+        GetPage(name: '/', page: () => HomeScreen()),
+        GetPage(name: '/song', page: () => SongScreen()),
+        GetPage(name: '/playlist', page: () => PlaylistScreen()),
+      ],
     );
   }
 }

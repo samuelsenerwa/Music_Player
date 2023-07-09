@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/song_model.dart';
 import '../widgets/section_header.dart';
+import '../widgets/song_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,17 +23,18 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: const _CustomAppBar(),
         bottomNavigationBar: _CustomNavBar(),
-        body: const SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               _DiscoverMusic(),
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, left: 20.0, bottom: 20.0),
-                child: Column(
-                  children: [
-                    SectionHeader(title: 'Trending Music'),
-                  ],
-                ),
+              _TrendingMusic(songs: songs),
+              Column(
+                children: [
+                  SectionHeader(title: 'Palylists'),
+                  ListView.builder(
+                    itemBuilder: (context, index) {},
+                  )
+                ],
               )
             ],
           ),
@@ -67,6 +69,41 @@ class HomeScreen extends StatelessWidget {
           label: 'Profile',
         ),
       ],
+    );
+  }
+}
+
+class _TrendingMusic extends StatelessWidget {
+  const _TrendingMusic({
+    super.key,
+    required this.songs,
+  });
+
+  final List<Song> songs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 20.0, left: 20.0, bottom: 20.0),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              right: 20.0,
+            ),
+            child: SectionHeader(title: 'Trending Music'),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.27,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: songs.length,
+                itemBuilder: (context, index) {
+                  return SongCard(song: songs[index]);
+                }),
+          ),
+        ],
+      ),
     );
   }
 }

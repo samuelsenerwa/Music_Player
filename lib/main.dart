@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
             .textTheme
             .apply(bodyColor: Colors.white, displayColor: Colors.white),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
       getPages: [
-        GetPage(name: '/', page: () => HomeScreen()),
-        GetPage(name: '/song', page: () => SongScreen()),
-        GetPage(name: '/playlist', page: () => PlaylistScreen()),
+        GetPage(name: '/', page: () => const HomeScreen()),
+        GetPage(name: '/song', page: () => const SongScreen()),
+        GetPage(name: '/playlist', page: () => const PlaylistScreen()),
       ],
     );
   }

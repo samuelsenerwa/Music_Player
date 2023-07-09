@@ -1,5 +1,7 @@
-import 'package:dynamic_music_player/models/song_model.dart';
 import 'package:flutter/material.dart';
+
+import '../models/song_model.dart';
+import '../widgets/section_header.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,8 +26,13 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               _DiscoverMusic(),
-              Column(
-                children: [],
+              Padding(
+                padding: EdgeInsets.only(top: 20.0, left: 20.0, bottom: 20.0),
+                child: Column(
+                  children: [
+                    SectionHeader(title: 'Trending Music'),
+                  ],
+                ),
               )
             ],
           ),
@@ -66,8 +73,8 @@ class HomeScreen extends StatelessWidget {
 
 class _DiscoverMusic extends StatelessWidget {
   const _DiscoverMusic({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -135,6 +142,5 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(56.0);
 }

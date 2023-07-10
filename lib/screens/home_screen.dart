@@ -1,6 +1,8 @@
+import 'package:dynamic_music_player/models/playlist_model.dart';
 import 'package:flutter/material.dart';
 
 import '../models/song_model.dart';
+import '../widgets/playlist_card.dart';
 import '../widgets/section_header.dart';
 import '../widgets/song_card.dart';
 
@@ -10,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Song> songs = Song.songs;
+    List<Playlist> playlists = Playlist.playlists;
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -32,7 +35,13 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   SectionHeader(title: 'Palylists'),
                   ListView.builder(
-                    itemBuilder: (context, index) {},
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.only(top: 20),
+                    itemCount: playlists.length,
+                    itemBuilder: (context, index) {
+                      return PlaylistCard(playlist: playlists[index]);
+                    },
                   )
                 ],
               )

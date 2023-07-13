@@ -63,9 +63,9 @@ class _SongScreenState extends State<SongScreen> {
               builder: (context, snapshot) {
                 final positionData = snapshot.data;
                 return SeekBar(
-                  duration: positionData?.duration ?? Duration.zero,
                   position: positionData?.duration ?? Duration.zero,
-                  onChanged: audioPlayer.seek,
+                  duration: positionData?.duration ?? Duration.zero,
+                  onChangedEnd: audioPlayer.seek,
                 );
               }),
         ],

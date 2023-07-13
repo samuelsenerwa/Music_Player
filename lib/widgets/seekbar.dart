@@ -50,9 +50,11 @@ class _SeekBarState extends State<SeekBar> {
               overlayColor: Colors.white,
             ),
             child: Slider(
+              min: 0.0,
+              max: widget.duration.inMilliseconds.toDouble(),
               value: min(
                 _dragValue ?? widget.position.inMilliseconds.toDouble(),
-                widget.position.inMilliseconds.toDouble(),
+                widget.duration.inMilliseconds.toDouble(),
               ),
               onChanged: (value) {
                 setState(() {

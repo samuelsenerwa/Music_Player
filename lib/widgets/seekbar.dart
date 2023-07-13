@@ -68,6 +68,15 @@ class _SeekBarState extends State<SeekBar> {
                   );
                 }
               },
+              onChangeEnd: (value) {
+                if (widget.onChangedEnd != null) {
+                  widget.onChangedEnd!(
+                    Duration(
+                      milliseconds: value.round(),
+                    ),
+                  );
+                }
+              },
             ),
           ),
         ),

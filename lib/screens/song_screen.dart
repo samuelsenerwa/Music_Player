@@ -6,7 +6,7 @@ import 'package:rxdart/rxdart.dart' as rxdart;
 import '../widgets/seekbar.dart';
 
 class SongScreen extends StatefulWidget {
-  const SongScreen({super.key});
+  const SongScreen({Key? key}) : super(key: key);
 
   @override
   State<SongScreen> createState() => _SongScreenState();

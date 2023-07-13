@@ -58,12 +58,38 @@ class _SongScreenState extends State<SongScreen> {
             fit: BoxFit.cover,
           ),
           const _BackgroundFilter(),
+          _MusicPlayer(
+              seekBarDataStream: _seekBarDataStream, audioPlayer: audioPlayer),
+        ],
+      ),
+    );
+  }
+}
+
+class _MusicPlayer extends StatelessWidget {
+  const _MusicPlayer({
+    super.key,
+    required Stream<SeekBarData> seekBarDataStream,
+    required this.audioPlayer,
+  }) : _seekBarDataStream = seekBarDataStream;
+
+  final Stream<SeekBarData> _seekBarDataStream;
+  final AudioPlayer audioPlayer;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           StreamBuilder<SeekBarData>(
               stream: _seekBarDataStream,
               builder: (context, snapshot) {
                 final positionData = snapshot.data;
                 return SeekBar(
-                  position: positionData?.duration ?? Duration.zero,
+                  position: positionData?.position ?? Duration.zero,
                   duration: positionData?.duration ?? Duration.zero,
                   onChangedEnd: audioPlayer.seek,
                 );
